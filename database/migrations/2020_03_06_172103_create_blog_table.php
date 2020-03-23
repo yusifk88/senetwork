@@ -20,7 +20,10 @@ class CreateBlogTable extends Migration
             $table->text('slug');
             $table->longText('body');
             $table->text('image');
+            $table->unsignedBigInteger('category_id');
+            $table->integer('views')->default(0);
             $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }
